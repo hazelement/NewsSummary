@@ -3,6 +3,7 @@
 import os
 import sys
 
+# todo design architect
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'article_summary.settings')

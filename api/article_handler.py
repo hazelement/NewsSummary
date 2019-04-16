@@ -5,6 +5,7 @@ class ArticleDigestion(object):
 
     def __init__(self, url):
 
+        # todo setup caching db and redis
         article = Article(url)
         article.download()
         article.parse()
