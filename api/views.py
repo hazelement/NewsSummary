@@ -25,3 +25,9 @@ class ArticleView(RESTfulView):
         article_digestion = ArticleDigestion(url)
 
         return HttpResponse(article_digestion.get_summary())
+
+
+
+
+
+
