@@ -1,13 +1,11 @@
-from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
 from django.http import HttpResponse
 
 import json
-from newspaper import Article
 
-from api.article_handler import ArticleDigestion
+from api.lib.article_handler import ArticleDigestion
 # Create your views here.
 class RESTfulView(View):
     @method_decorator(csrf_exempt)

@@ -1,5 +1,5 @@
 from django.test import TestCase
-from api.article_handler import ArticleDigestion
+from api.lib.article_handler import ArticleDigestion
 
 class ArticleTest(TestCase):
     def setUp(self):
