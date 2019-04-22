@@ -59,14 +59,20 @@ class DailyDigestionDao(object):
         daily_digestion.save()
         return daily_digestion
 
-    def get_digestion(self, site, gt_time):
+    def get_digestion(self, gt_time, site=None):
         """
         get digestion for a specific site
-        :param site: site to get digestion for
+        :param site: site to get digestion for, optional
         :param gt_time: get digestion created greater than a time
-        :return: list of UrlDigestionDBModel
+        :return: list of DailyDigestions
         """
-        assert isinstance(site, Site)
+
         assert isinstance(gt_time, datetime)
-        daily_digestions = DailyDigestion.objects.filter(site=site).filter(created__gte=gt_time).all()
-        return [digestion.url_digestion for digestion in daily_digestions]
+
+        query_set = DailyDigestion.objects.filter(created__gte=gt_time)
+        if site is not None:
+            assert isinstance(site, Site)
+            query_set = query_set.filter(site=site)
+
+        daily_digestions = query_set.order_by('created').all()
+        return daily_digestions

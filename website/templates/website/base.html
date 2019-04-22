@@ -1,0 +1,49 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--    <link rel="icon" href="../../../../favicon.ico">-->
+
+    <title>Article Digestion</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css"/>
+
+
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Article Digestions</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">About</a></li>
+        </ul>
+      </div>
+    </nav>
+</header>
+
+<main role="main">
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'js/digestion.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script> <!-- This is how to include a static file -->
+</body>
+</html>

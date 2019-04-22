@@ -38,4 +38,5 @@ class DailyDigestionDaoTest(TestCase):
 
         start_time = datetime.utcnow() - timedelta(days=1)
 
-        assert len(DailyDigestionDao().get_digestion(site, start_time)) > 0
+        assert len(DailyDigestionDao().get_digestion(start_time, site)) > 0
+        assert len(DailyDigestionDao().get_digestion(start_time)) > 0
