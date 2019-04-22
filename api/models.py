@@ -17,7 +17,7 @@ class UrlDigestionDBModel(models.Model):
 class Site(models.Model):
     name = models.TextField()
     url = models.URLField(primary_key=True)
-    description = models.TextField()
+    description = models.TextField(default="")
 
 
 class DailyDigestion(models.Model):
