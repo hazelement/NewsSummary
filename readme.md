@@ -4,7 +4,9 @@ This project aims to provide an end point on top of newpaper3k for user to summa
 
 ## Todo
 
-1. implement based on uml design
+- [x] implement based on uml design
+- [ ] scrape engine to create article entry in database daily from popular news sites
+- [ ] webpage that list latest article summary from popular news sites
 
 ### Features
 
