@@ -43,16 +43,16 @@
         <h2>URL Digestion</h2>
         <div class="row">
             <div class="form-group">
-                <label for="exampleInputUrl">Enter a URL below and click on Digest to generate a summary of the
+                <label for="inputUrl">Enter a URL below and click on Digest to generate a summary of the
                     article in the url.</label>
-                <input type="email" class="form-control" id="exampleInputUrl" aria-describedby="emailHelp"
+                <input type="email" class="form-control" id="inputUrl" aria-describedby="emailHelp"
                        placeholder="Enter URL">
             </div>
         </div>
 
         <div class="row">
             <div class="form-group">
-                <button type="button" class="btn btn-primary">Digest</button>
+                <button type="button" class="btn btn-primary" id="urlDigestionSubmit">Digest</button>
             </div>
         </div>
 
@@ -106,6 +106,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'js/digestion.js' %}"></script>
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script> <!-- This is how to include a static file -->
 </body>
