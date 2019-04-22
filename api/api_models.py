@@ -1,7 +1,7 @@
 
 from abc import ABC, abstractmethod
 from datetime import datetime
-from api.models import UrlDigestionDBModel
+from api.models import UrlDigestionDBModel, Site, DailyDigestion
 
 class Serializable(ABC):
 
@@ -44,4 +44,17 @@ class UrlDigestionAPIModel(Serializable):
                 "author": self.author,
                 "title": self.title,
                 "digestion": self.digestion}
+
+
+class DailyDigestionAPIModel(object):
+
+    def __init__(self, site):
+        assert isinstance(site, Site)
+        self.site = site
+        self.articles = []
+
+    def add_digestion(self, daily_digestion):
+        assert isinstance(daily_digestion, DailyDigestion)
+        assert daily_digestion.site == self.site
+        self.articles.append(daily_digestion.url_digestion)
 

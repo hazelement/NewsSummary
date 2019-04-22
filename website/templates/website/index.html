@@ -1,0 +1,28 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+<div class="container">
+
+
+        {% for site_digestion in site_digestions %}
+
+        <div class="row article-buffer">
+            <div class="col-3">
+                <div class="row h4">
+                    <a href={{site_digestion.url_digestion.url}}>{{site_digestion.url_digestion.title}}</a>
+                </div>
+                <div class="row"><a href={{site_digestion.site.url}}>{{site_digestion.site.name}}</a></div>
+                <div class="row">Authors: {{site_digestion.url_digestion.author}}</div>
+                <div class="row">Published on: {{site_digestion.url_digestion.publish_date}}</div>
+            </div>
+
+            <div class="col-9">
+                <div class="row">{{site_digestion.url_digestion.digestion}}</div>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+</div>
+{% endblock %}

@@ -51,7 +51,7 @@ class SiteDao(object):
 class DailyDigestionDao(object):
 
     def add_digestion(self, site, url_digestion):
-        assert isinstance(site, Site)
+        assert isinstance(site, Site), "site must be instance of Site"
         assert isinstance(url_digestion, UrlDigestionDBModel)
 
         daily_digestion = DailyDigestion(site=site,
