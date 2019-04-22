@@ -1,4 +1,6 @@
 from django.test import TestCase
+import json
+
 
 class BaseTest(TestCase):
     """
@@ -13,4 +15,11 @@ class BaseTest(TestCase):
             }
         response = self.client.put(self.article_url, data=d, content_type='application/json')
         self.assertEqual(response.status_code, 200)
-        print(response)
+
+        data = json.loads(response.content)
+
+        assert "url" in data
+        assert 'publish_date' in data
+        assert 'author' in data
+        assert 'title' in data
+        assert 'digestion' in data

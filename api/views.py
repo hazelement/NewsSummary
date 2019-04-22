@@ -1,7 +1,7 @@
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 import json
 
@@ -24,4 +24,4 @@ class ArticleView(RESTfulView):
 
         article_digestion = UrlDigestion(url)
 
-        return HttpResponse(article_digestion.get_digestion().digestion)
+        return JsonResponse(article_digestion.get_digestion().serialize())

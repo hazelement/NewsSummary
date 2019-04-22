@@ -21,7 +21,7 @@ document.getElementById("urlDigestionSubmit").onclick = function(){
                 data: JSON.stringify({"url": requestURL}),
                 headers: { "Content-Type": "application/json"},
                 success: function (result) {
-                    document.getElementById('outputUrl').value = result;
+                    document.getElementById('outputUrl').value = result.title + "\n" + result.author +  ", " + result.publish_date + "\n" + result.digestion;
                 },
                 error: function (request, status, error) {
                     document.getElementById('outputUrl').value = "Unable to process article. ";
