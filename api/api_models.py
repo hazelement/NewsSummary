@@ -1,7 +1,7 @@
 
 from abc import ABC, abstractmethod
 from datetime import datetime
-
+from api.models import UrlDigestionDBModel
 
 class Serializable(ABC):
 
@@ -28,6 +28,15 @@ class UrlDigestionAPIModel(Serializable):
         self.author = author
         self.title = title
         self.digestion = digestion
+
+    @classmethod
+    def from_db_model(cls, url_digestion_db_model):
+        assert isinstance(url_digestion_db_model, UrlDigestionDBModel)
+        return UrlDigestionAPIModel(url_digestion_db_model.url,
+                                    url_digestion_db_model.publish_date,
+                                    url_digestion_db_model.author,
+                                    url_digestion_db_model.title,
+                                    url_digestion_db_model.digestion)
 
     def serialize(self):
         return {"url":  self.url,

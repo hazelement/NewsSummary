@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 
 import json
 
-from api.lib.article_handler import UrlDigestion
+from api.lib.article_handler import UrlSummary
 
 
 # Create your views here.
@@ -22,6 +22,6 @@ class ArticleView(RESTfulView):
 
         url = data['url']
 
-        article_digestion = UrlDigestion(url)
+        article_digestion = UrlSummary(url)
 
         return JsonResponse(article_digestion.get_digestion().serialize())

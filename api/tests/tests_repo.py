@@ -1,5 +1,6 @@
 from django.test import TestCase
-from api.repo import UrlDigestionDao, UrlDigestionRedis, DigestionRepo
+from api.repo import UrlDigestionRedis, DigestionRepo
+from api.dao import UrlDigestionDao
 
 
 class BaseTest(TestCase):

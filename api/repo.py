@@ -1,54 +1,15 @@
-
-from abc import ABC, abstractmethod
-from api.models import UrlDigestionDBModel
 from singleton_decorator import singleton
 import redis
 import fakeredis
 
+from api.interfaces import UrlDigestionInterface
 from article_summary.settings import REDIS_HOST, REDIS_PORT, TESTING
 from api.api_models import UrlDigestionAPIModel
-from api.lib.article_handler import UrlDigestion
-
-class UrlAccessInterface(ABC):
-
-    @abstractmethod
-    def get_entry(self, url):
-        """ returns UrlDigestionAPIModel """
-        return
-
-    @abstractmethod
-    def set_entry(self, url, url_digestion_api_model):
-        """ save url digestion """
-        return
+from api.lib.article_handler import UrlSummary
 
 
 @singleton
-class UrlDigestionDao(UrlAccessInterface):
-
-    def get_entry(self, url):
-        db_url = UrlDigestionDBModel.objects.filter(url=url).first()
-        if db_url is not None:
-            return UrlDigestionAPIModel(url,
-                                        db_url.publish_date,
-                                        db_url.author,
-                                        db_url.title,
-                                        db_url.digestion)
-        else:
-            return None
-
-    def set_entry(self, url, digestion):
-        assert isinstance(digestion, UrlDigestionAPIModel)
-        db_url = UrlDigestionDBModel(url=digestion.url,
-                                     digestion=digestion.digestion,
-                                     author=digestion.author,
-                                     title=digestion.title,
-                                     publish_date=digestion.publish_date)
-        db_url.save()
-        return db_url is not None
-
-
-@singleton
-class UrlDigestionRedis(UrlAccessInterface):
+class UrlDigestionRedis(UrlDigestionInterface):
 
     def __init__(self):
         if TESTING:
@@ -79,6 +40,7 @@ class UrlDigestionRedis(UrlAccessInterface):
         self.r.set(url + "publish_date", digestion.publish_date)
 
 
+from api.dao import UrlDigestionDao
 @singleton
 class DigestionRepo(object):
 
@@ -97,11 +59,12 @@ class DigestionRepo(object):
         # retrieve from DB
         db_digestion = UrlDigestionDao().get_entry(url)
         if db_digestion:
-            UrlDigestionRedis().set_entry(url, db_digestion)
-            return db_digestion
+            digestion = UrlDigestionAPIModel.from_db_model(db_digestion)
+            UrlDigestionRedis().set_entry(url, digestion)
+            return digestion
 
         # perform new digestion
-        article_digestion = UrlDigestion(url).get_digestion()
+        article_digestion = UrlSummary(url).get_digestion()
 
         UrlDigestionDao().set_entry(url, article_digestion)
         UrlDigestionRedis().set_entry(url, article_digestion)
