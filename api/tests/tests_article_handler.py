@@ -1,10 +1,10 @@
 from django.test import TestCase
-from api.lib.article_handler import ArticleDigestion
+from api.lib.article_handler import UrlDigestion
 
 class ArticleTest(TestCase):
     def setUp(self):
         url = "https://www.cbc.ca/news/politics/mint-coin-loonie-homosexual-rights-1.5095317"
-        self.article = ArticleDigestion(url)
+        self.article = UrlDigestion(url)
 
     def test_summary(self):
-        print(self.article.get_summary())
+        print(self.article.get_digestion())

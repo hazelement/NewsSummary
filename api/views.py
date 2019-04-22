@@ -5,7 +5,9 @@ from django.http import HttpResponse
 
 import json
 
-from api.lib.article_handler import ArticleDigestion
+from api.lib.article_handler import UrlDigestion
+
+
 # Create your views here.
 class RESTfulView(View):
     @method_decorator(csrf_exempt)
@@ -20,12 +22,6 @@ class ArticleView(RESTfulView):
 
         url = data['url']
 
-        article_digestion = ArticleDigestion(url)
+        article_digestion = UrlDigestion(url)
 
-        return HttpResponse(article_digestion.get_summary())
-
-
-
-
-
-
+        return HttpResponse(article_digestion.get_digestion())
