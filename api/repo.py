@@ -5,7 +5,7 @@ import fakeredis
 from api.interfaces import UrlDigestionInterface
 from article_summary.settings import REDIS_HOST, REDIS_PORT, TESTING
 from api.api_models import UrlDigestionAPIModel
-from api.lib.article_handler import UrlSummary
+from api.src.article_handler import UrlSummary
 
 
 @singleton

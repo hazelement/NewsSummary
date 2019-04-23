@@ -74,5 +74,5 @@ class DailyDigestionDao(object):
             assert isinstance(site, Site)
             query_set = query_set.filter(site=site)
 
-        daily_digestions = query_set.order_by('created').all()
+        daily_digestions = query_set.order_by('created').reverse().all()[0:50]
         return daily_digestions

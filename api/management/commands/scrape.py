@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
-from api.lib.scraper import Scraper
+from api.src.scraper import Scraper
 
 
 class Command(BaseCommand):

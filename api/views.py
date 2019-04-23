@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 
 import json
 
-from api.lib.article_handler import UrlSummary
+from api.src.article_handler import UrlSummary
 
 
 # Create your views here.

@@ -1,5 +1,5 @@
 from django.test import TestCase
-from api.lib.article_handler import UrlSummary
+from api.src.article_handler import UrlSummary
 
 class ArticleTest(TestCase):
     def setUp(self):
