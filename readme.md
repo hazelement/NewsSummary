@@ -1,6 +1,6 @@
 ## About
 
-This project aims to provide an end point on top of newpaper3k for user to summarize news articles. It also have a home page that shows summarized news from major news sites. 
+This project aims to provide an end point on top of newpaper3k, https://newspaper.readthedocs.io/en/latest/, for user to summarize news articles. It also have a home page that shows summarized news from major news sites. 
 
 ## Todo
 
