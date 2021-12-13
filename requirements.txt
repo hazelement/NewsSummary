@@ -13,7 +13,7 @@ feedparser==5.2.1
 idna==2.8
 jieba3k==0.35.1
 kombu==4.5.0
-lxml==4.3.3
+lxml==4.6.5
 newspaper3k==0.2.8
 nltk==3.4.5
 Pillow==6.2.0
